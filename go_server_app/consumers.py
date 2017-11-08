@@ -46,6 +46,7 @@ def ws_message(message):
             channel.send(to_text_dict("There is no game with the ID " + game_id))
             return
 
+        # this game exists
         game_meta = GameMeta.objects.get(game_id=game_id)
 
         if game_meta.status != GameStatus.WAITING_FOR_PLAYERS:
@@ -60,6 +61,7 @@ def ws_message(message):
             channel.send(to_text_dict("The other player has the same username."))
             return
 
+        # if you reach here, you can join this game
         GamesManager.assign_player_to_game(game_meta, channel.name, username, color)
 
 

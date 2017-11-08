@@ -9,6 +9,7 @@ class GamePlay:
         self.current_player = None
         self.black_player_channel_name = None
         self.white_player_channel_name = None
+        # add spectator channels TODO
 
     def start(self):
         game_meta = GameMeta.objects.get(game_id=self.game_id)
@@ -21,6 +22,7 @@ class GamePlay:
 
     def broadcast(self, message):
         Channel(self.black_player_channel_name).send(to_text_dict(message))
+        # if two players come from same channel, send message only once
         if self.black_player_channel_name != self.white_player_channel_name:
             Channel(self.white_player_channel_name).send(to_text_dict(message))
 
