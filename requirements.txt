@@ -1,0 +1,8 @@
+# server-side
+django
+channels
+django-enumfields
+
+# client-side
+websocket-client
+python-telegram-bot
