@@ -92,6 +92,7 @@ class GamePlay:
             self.next_turn()
             return
 
+        send(channel_name, '? unrecognized command')
 
 
 # lysator.liu.se/~gunnar/gtp/gtp2-spec-draft2/gtp2-spec.html#SECTION00070000000000000000
