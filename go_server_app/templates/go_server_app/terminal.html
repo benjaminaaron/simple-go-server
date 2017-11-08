@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Terminal Client for Go Server</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- terminal.jcubic.pl -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.10.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.10.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+        <style>
+            body {
+                background-color: black;
+            }
+            #terminal_container {
+                border: 1px solid darkcyan;
+            }
+            .terminal-output > div:first-of-type { /* the first greetings-line */
+                color: yellow;
+            }
+            .terminal-output .command, .cmd { /* .cmd is where the cursor currently is, command are past inputs */
+                color: lightgray;
+            }
+        </style>
+    </head>
+    <script>
+        var terminal, socket;
+
+        $(function() {
+            terminal = $('#terminal_container').terminal(function (command) {
+                if (typeof socket !== 'undefined') {
+                    socket.send(command);
+                } else {
+                    this.error('No connection to Go Server');
+                }
+            }, {
+                greetings: 'GTP Terminal Client for Go Server',
+                name: 'go_server_terminal_client',
+                height: 400,
+                prompt: '> '
+            });
+        });
+
+        $(document).ready(function() {
+            try {
+                socket = new WebSocket("ws://" + window.location.host);
+                socket.onmessage = function(e) {
+                    terminal.echo(e.data);
+                };
+            }
+            catch(err) {
+                terminal.error(err.message);
+            }
+        });
+    </script>
+        <body>
+            <div id="terminal_container"></div>
+        </body>
+</html>
