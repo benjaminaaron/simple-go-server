@@ -25,13 +25,12 @@ def assign_player_to_game(game_meta, channel_name, username, color):
 
     if color == 'b':
         game_meta.set_black_player(username)
-        game_play.black_player_channel_name = channel_name
+        game_play.black_player = channel_name
     if color == 'w':
         game_meta.set_white_player(username)
-        game_play.white_player_channel_name = channel_name
+        game_play.white_player = channel_name
 
-    ready_to_start = game_play.black_player_channel_name is not None \
-                     and game_play.white_player_channel_name is not None
+    ready_to_start = game_play.black_player is not None and game_play.white_player is not None
 
     if not ready_to_start:
         Channel(channel_name).send(to_text_dict('Waiting for a 2nd player to join...'))
