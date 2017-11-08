@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'go_server_app'  # namespacing
 urlpatterns = [
+    # the name-parameter can get referenced in the .html templates
     url(r'^$', views.index, name='index'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^game/(?P<game_id>[a-zA-Z0-9]+)$', views.game, name='game'),
