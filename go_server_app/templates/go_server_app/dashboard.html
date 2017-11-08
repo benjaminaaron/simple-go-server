@@ -1,0 +1,37 @@
+{% if games_list %}
+    These games are available on the server:
+    <ul>
+    {% for game in games_list %}
+        <li>{{ game.id }}: <a href="{% url 'go_server_app:game' game.game_id %}">{{ game.serialize_to_json }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No games are available.</p>
+{% endif %}
+
+<!--
+<br>
+Create a <input type="submit" value="new game" onclick="javascript:openNewGameConfig()">
+<br><br>
+<form id="new-game-form" style="display:none;" action="javascript:createNewGame()">
+  --Game ID:<br>
+  <input type="text" id="game-id-field" value="">
+  <br>
+  Board size:<br>
+  <input type="text" id="board-size-field" value="9">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+    function openNewGameConfig() {
+        document.getElementById('new-game-form').style.display = 'block';
+    }
+    function createNewGame() {
+        boardSize = parseInt(document.getElementById('board-size-field').value);
+        window.location = window.location.href + 'create_game/?board_size=' + boardSize;
+        //document.getElementById('new-game-form').style.display = 'none';
+        //location.reload();
+    }
+</script>
+-->
