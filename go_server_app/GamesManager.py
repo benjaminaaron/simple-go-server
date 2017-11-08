@@ -38,3 +38,11 @@ def assign_player_to_game(game_meta, channel_name, username, color):
 
     game_meta.set_status(GameStatus.ONGOING)
     game_play.start()
+
+
+def remove_player_if_in_game(channel_name):
+    if channel_name in ChannelName_to_GamePlay:
+        game_play = ChannelName_to_GamePlay[channel_name]
+        game_play.remove_player(channel_name)
+        # TODO
+        del ChannelName_to_GamePlay[channel_name]

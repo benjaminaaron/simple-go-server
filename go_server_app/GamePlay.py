@@ -58,6 +58,11 @@ class GamePlay:
             return self.white_player
         return self.black_player
 
+    def remove_player(self, channel_name):
+        game_meta = GameMeta.objects.get(game_id=self.game_id)
+        self.broadcast('one player has left the game')
+        # TODO
+
     def handle_command(self, channel_name, command):
         print('got command ' + command + ' from channel ' + channel_name)
 

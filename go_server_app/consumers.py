@@ -73,4 +73,5 @@ def ws_message(message):
 
 @channel_session
 def ws_disconnect(message):
-    print(message)
+    channel = message.reply_channel
+    GamesManager.remove_player_if_in_game(channel.name)
