@@ -20,7 +20,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''  # intentionally not committed to the repository :)
+
+# create new key at first launch as gitignored file, via stackoverflow.com/a/4674143/2474159
+try:
+    from secret_key import SECRET_KEY
+except ImportError:
+    import string
+    import random
+    import datetime
+    # via gist.github.com/mattseymour/9205591
+    chars = ''.join([string.ascii_letters, string.digits, string.punctuation])\
+        .replace('\'', '').replace('"', '').replace('\\', '')
+    new_secret_key = ''.join([random.SystemRandom().choice(chars) for i in range(50)])
+    file = open('secret_key.py', 'w')
+    file.write('# automatically generated at first run of this script: '
+               + str(datetime.datetime.now()) + '\n')
+    file.write('SECRET_KEY = \'' + new_secret_key + '\'\n')
+    file.close()
+    from secret_key import SECRET_KEY
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
