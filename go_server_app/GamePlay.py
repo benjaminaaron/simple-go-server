@@ -64,10 +64,10 @@ class GamePlay:
         # TODO
 
     def handle_command(self, channel_name, command):
-        print('got command ' + command + ' from channel ' + channel_name)
+        print('game ' + self.game_id + ' received command ' + command + ' from channel ' + channel_name)
 
         if command == 'showboard':
-            send(channel_name, '')
+            send(channel_name, '[ board ]')
             return
 
         if command.startswith('play'):
@@ -92,17 +92,10 @@ class GamePlay:
             self.next_turn()
             return
 
-        if command == '':
-            send(channel_name, '')
-            return
-
-        if command == '':
-            send(channel_name, '')
-            return
 
 
 # lysator.liu.se/~gunnar/gtp/gtp2-spec-draft2/gtp2-spec.html#SECTION00070000000000000000
-# All implementations are required to support the following commands:
+# --> "All implementations are required to support the following commands:"
 # protocol_version  [ ]
 # name              [ ]
 # version           [ ]
@@ -113,4 +106,7 @@ class GamePlay:
 # clear_board       [ ]
 # komi              [ ]
 # play              [x]
-# genmove           [ ]
+# genmove           [x]
+#
+# --> optional:
+# showboard         [ ]
