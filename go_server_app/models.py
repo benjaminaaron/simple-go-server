@@ -59,4 +59,8 @@ class GameMeta(models.Model):
         self.white_player = username
         self.save()
 
+    def set_status(self, status):
+        self.status = status
+        self.save()
+
     objects = GameMetaManager()

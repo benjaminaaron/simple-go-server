@@ -2,6 +2,7 @@ import json
 
 from channels.sessions import channel_session
 
+from . import GamesManager
 from .models import GameStatus, GameMeta
 from .utils import to_text_dict, normalize_color_string
 
@@ -59,9 +60,7 @@ def ws_message(message):
             channel.send(to_text_dict("The other player has the same username."))
             return
 
-        # TODO
-
-        return
+        GamesManager.assign_player_to_game(game_meta, channel.name, username, color)
 
 
 @channel_session
