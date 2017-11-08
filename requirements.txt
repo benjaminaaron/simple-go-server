@@ -1,4 +1,5 @@
 # server-side
+# on windows if you get "no module named win32api": pip install pypiwin32
 django
 channels
 django-enumfields
