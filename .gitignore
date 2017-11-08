@@ -1,5 +1,7 @@
-# PyCharm
+# PyCharm & Python
 .idea/
+__pycache__
+*.pyc
 
 # virtualenv
 .venv/
