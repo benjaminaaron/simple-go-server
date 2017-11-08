@@ -36,10 +36,10 @@ class GamePlay:
         send(self.current_player, 'genmove ' + self.get_color_of_current_player())
 
     def broadcast(self, message):
-        Channel(self.black_player).send(to_text_dict(message))
+        send(self.black_player, message)
         # if two players come from same channel, send message only once
         if self.black_player != self.white_player:
-            Channel(self.white_player).send(to_text_dict(message))
+            send(self.white_player, message)
 
     def get_color_of_current_player(self):
         if self.current_player == self.black_player:
@@ -80,7 +80,7 @@ class GamePlay:
                 return
             move = args[1]
 
-            # TODO
+            # TODO place stone on own engine to validate coordinates and legality of move
 
             send(self.current_player, '= stone placed at ' + move)
             send(self.get_other_player(), 'play ' + col + ' ' + move)
