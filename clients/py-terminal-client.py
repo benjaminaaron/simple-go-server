@@ -28,6 +28,8 @@ def on_open(ws):
     thread.start_new_thread(run, ())
 
 
+# start from terminal like this: python py-terminal-client.py localhost:8000
+
 if __name__ == "__main__":  # via github.com/websocket-client/websocket-client#long-lived-connection
     if len(sys.argv) > 1:  # 0 is always own filename
         url = sys.argv[1]
