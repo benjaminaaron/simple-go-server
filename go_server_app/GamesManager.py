@@ -9,6 +9,12 @@ GameID_to_GamePlay = {}
 ChannelName_to_GamePlay = {}
 
 
+def get_game_associated_with_channel_name(channel_name):
+    if channel_name not in ChannelName_to_GamePlay:
+        return None
+    return ChannelName_to_GamePlay[channel_name]
+
+
 def assign_player_to_game(game_meta, channel_name, username, color):
     game_id = game_meta.game_id
     if game_id not in GameID_to_GamePlay:

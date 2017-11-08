@@ -20,6 +20,12 @@ def ws_message(message):
     command = message.content['text'].strip()  # strip() is same as trim() in Java, removes whitespaces at start and end
     channel = message.reply_channel
 
+    game_play = GamesManager.get_game_associated_with_channel_name(channel.name)
+    if game_play is not None:
+        game_play.handle_command(channel.name, command)
+        return
+
+    # if channel.name not yet known -> in meta mode
     if command == 'list_games':
         games_json_arr = []
         for game_meta in GameMeta.objects.all():
