@@ -16,7 +16,7 @@ def ws_connect(message):
 
 @channel_session
 def ws_message(message):
-    command = message.content['text']
+    command = message.content['text'].strip()  # strip() is same as trim() in Java, removes whitespaces at start and end
     channel = message.reply_channel
 
     if command == 'list_games':
