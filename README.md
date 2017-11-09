@@ -37,3 +37,10 @@ Just a dummy implementation, no game logic so far.
 ## Screenshot
 
 ![](https://user-images.githubusercontent.com/5141792/32623311-06aa15fa-c586-11e7-8d26-d94789a3fccd.png)
+(note that the screenshot exposes a flaw : clients should respond with `=C4` to a `genmove` command, _not_ with a `play` command)
+
+## Communication Workflow
+
+Strict GTP starts when both players have joined a game. Clients can submit commands at any time, however, the server will respond to `play` commands with an error. Clients may only respond to a `genmove` command with their move. In that way, the server is responsible for the turn-by-turn management.
+
+![](https://user-images.githubusercontent.com/5141792/32624760-7f311bc8-c58a-11e7-8534-83e765038bbb.png)
