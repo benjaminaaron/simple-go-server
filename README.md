@@ -32,4 +32,8 @@ Admin options are located at `/admin`.
 
 ## Playing
 
-...
+Just a dummy implementation, no game logic so far.
+
+## Screenshot
+
+![](https://user-images.githubusercontent.com/5141792/32623311-06aa15fa-c586-11e7-8d26-d94789a3fccd.png)
