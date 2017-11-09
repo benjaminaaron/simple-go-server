@@ -1,5 +1,10 @@
 # Simple Go server using the Go Text Protocol
 
+**_This project is not completed and abandoned for now._**
+The meta game logic is (sort of) in place, but there is no actual Go game engine connected though.
+Three types of websocket-clients are prototyped: terminal in the browser, python script and telegram bot.
+It may serve as architectural inspiration for future Django (Channels) projects of mine.
+
 ## Setup
 
 Requires **Python 3.6** or newer.
@@ -23,7 +28,7 @@ Add administrators using `python manage.py createsuperuser`.
 
 `python manage.py runserver` starts the Django server at `localhost:8000`.
 
-The admin console is located at `/admin`.
+Admin options are located at `/admin`.
 
 ## Playing
 
