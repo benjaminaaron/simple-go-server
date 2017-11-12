@@ -12,7 +12,7 @@ Requires **Python 3.6** or newer.
 Navigate to this cloned repository and create a virtual environment:
 `python -m venv .venv`. Sometimes it's `python3` instead, check which one is the **3.6+** version on your system by running `python`, leave again with `quit()`.
 
-Activate it using `source activate .venv` on macOS or `.\.venv\Scripts\activate` on windows.
+Activate it using `source activate .venv` on macOS, `source .venv/bin/activate` on Linux or `.\.venv\Scripts\activate` on windows.
 
 Install the requirements: `pip install -r requirements.txt`.
 
